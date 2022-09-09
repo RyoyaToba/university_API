@@ -1,0 +1,44 @@
+openapi: "3.0.0"
+info:
+  title: "university API"
+  version: "0.0.1"
+  description: "大学情報を検索できるAPIです"
+paths:
+  /university/:
+    get:
+      summary: "大学情報一覧取得"
+      description: "大学の一覧を取得できます"
+      operationId: "listUniversity"
+      tags:
+        - university
+      parameters:
+        - name: limit
+          in: query
+          required: true
+          description: "リストに含まれるリソースの最大値"
+          schema:
+            type: integer
+            format: int32
+            minimum: 100
+            default: 10
+        - name: offset
+          in: query
+          required: true
+          description: "オフセット"
+          schema:
+            type: integer
+            format: int64
+            minimum: 0
+            default: 0
+      responses:
+        '200':
+          description: "OK"
+  /university/10:
+    get:
+      summary: "大学情報の一件取得"
+      tags:
+        - university
+      responses:
+        '200':
+          description: OK
+
