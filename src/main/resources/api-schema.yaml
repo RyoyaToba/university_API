@@ -33,12 +33,56 @@ paths:
       responses:
         '200':
           description: "OK"
-  /university/10:
+
+  /university/{id}:
     get:
       summary: "大学情報の一件取得"
       tags:
         - university
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: "大学情報を取得するID"
+          schema:
+            type: integer
+            format: int64
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UniversityDTO"
 
+components:
+  schemas:
+    UniversityDTO:
+      description: "大学情報を格納したEntityです"
+      type: object
+      properties:
+        id:
+          type: integer
+          description: "大学ID"
+          format: int64
+        name:
+          type: string
+          description: "大学名"
+        universityCategoryId:
+          type: integer
+          format: int32
+          description: "大学のカテゴリーを示すID"
+        prefectureId:
+          type: integer
+          format: int32
+          description: "都道府県を示すID"
+        genderCategoryId:
+          type: integer
+          format: int32
+          description: "共学か女子大かを判別するID"
+      required:
+        - id
+        - name
+        - universityCategoryId
+        - prefectureId
+        - genderCategoryId
