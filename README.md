@@ -10,4 +10,4 @@
 
 取得結果
 
-![Swagger-UI-Preview](https://user-images.githubusercontent.com/105257856/189606340-e1219048-608b-43d5-8228-8f1500f71407.png)
+![localhost-8080-university-3220](https://user-images.githubusercontent.com/105257856/189606460-0eee52e6-8ef3-466e-b698-6b32a2e1b8e5.png)
