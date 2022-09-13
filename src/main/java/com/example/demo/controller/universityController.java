@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.entity.UniversityEntity;
 import com.example.demo.service.UniversityService;
 import com.example.university.controller.UniversityApi;
 import com.example.university.model.UniversityDTO;
@@ -20,7 +21,19 @@ public class universityController implements UniversityApi {
 
     @Override
     public ResponseEntity<UniversityDTO> universityIdGet(Long id) {
-        UniversityDTO universityDTO = universityService.loadById(id);
+        UniversityEntity universityEntity = universityService.loadById(id);
+        UniversityDTO universityDTO = new UniversityDTO();
+
+        universityDTO.setId(universityEntity.getId());
+        universityDTO.setName(universityEntity.getName());
+        universityDTO.setUniversityCategoryId(universityEntity.getUniversityCategoryId());
+        universityDTO.setPrefectureId(universityEntity.getPrefectureId());
+        universityDTO.setGenderCategoryId(universityEntity.getGenderCategoryId());
         return ResponseEntity.ok(universityDTO);
     }
+
+
+
+
+
 }
